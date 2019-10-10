@@ -1,0 +1,21 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="application">
+  <jobTemplates>
+    <jobTemplate id="notebook">
+      <streamingExecutable>/application/notebook/run</streamingExecutable>
+      <defaultParameters><parameter id="indexAggCat" title="indexAggCat" abstract="index to access catalog of aggregated land surface temperature time series" maxOccurs="1" scope="runtime" type="LiteralData">better-wfp-02-02-01</parameter><parameter id="apikeyAggCat" title="apikeyAggCat" abstract="apikey to access indexAggCat catalog" maxOccurs="1" scope="runtime" type="LiteralData"/></defaultParameters>
+     <defaultJobconf>
+        <property id="mapred.task.timeout">9900000000000</property>
+        <property id="ciop.job.max.tasks">1</property> 
+     </defaultJobconf>
+    </jobTemplate>
+  </jobTemplates>
+  <workflow id="ewf-wfp-02-02-02" title="Snow Cover Climatology" abstract="Snow Cover Climatology">
+    <workflowVersion>1.0</workflowVersion>
+    <node id="notebook">
+      <job id="notebook"/>
+      <sources>
+        <source id="source" title="Input references" abstract="Input references" refid="string:list" scope="runtime">input_reference</source>
+      </sources>
+    </node>
+  </workflow>
+</application>
